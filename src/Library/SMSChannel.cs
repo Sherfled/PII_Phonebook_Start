@@ -5,6 +5,7 @@ namespace Library
         
         public void SendSMS(string myName, string text)
         {
+            /*
             //List<Contact> persons = this.Search(myNames);
 
             foreach (Contact person in result)
@@ -19,7 +20,7 @@ namespace Library
                     }
                 //}
             }
-        
+            */
         }
         
     }

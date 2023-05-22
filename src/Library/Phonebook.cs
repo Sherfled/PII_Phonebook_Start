@@ -14,6 +14,8 @@ namespace Library
 
         public Contact Owner { get; }
 
+
+        // No se que hace esto. Si agrega, nosotros no deberiamos de hacer el metodo
         public List<Contact> Search(string[] names)
         {
             List<Contact> result = new List<Contact>();
@@ -32,9 +34,9 @@ namespace Library
             return result;
         }
 
-        public void Add(string name, string phone, string email)
+        public void Add(Contact contact)
         {
-            this.persons.Add(new Contact(name));
+            this.persons.Add(contact);
         }
 
         public void Remove(Contact contact)
@@ -48,17 +50,26 @@ namespace Library
         {
             //List<Contact> persons = this.Search(myNames);
             int send = 0;
-            foreach (Contact person in persons)
+            if (myName != this.Owner.Name)
             {
-                                
-                if (person.Name == myName)
+                foreach (Contact person in persons)
                 {
-                    Message myMessage = new Message(this.Owner.Name, person.Name);
-                    myMessage.Text = text;
-                    person.Recive(myMessage.From, myMessage);
-                    send++;
+                                    
+                    if (person.Name == myName)
+                    {
+                        Message myMessage = new Message(this.Owner.Name, person.Name);
+                        myMessage.Text = text;
+                        person.Recive(myMessage.From, myMessage);
+                        Console.WriteLine("Su mensaje ha sido enviado con exito.");
+                        send++;
+                    }
                 }
             }
+            else
+            {
+                return Console.WriteLine("No puede enviarse mensaje de texto a usted.");
+            }
+
             if (send == 0)
             {
                 Console.WriteLine($"Usted no tiene al contacto {myName} entre sus contactos.");
@@ -68,16 +79,31 @@ namespace Library
 
         public void SendEmail(Contact contact, string text)
         {
-            if (contact.Name == this.Owner.Name)
+            int sendE = 0;
+            if (contact.Email == this.Owner.Email)
             {
                 Console.WriteLine("No puede enviar emails a usted.");
             }
             else
             {
-                Message myMessage = new Message(this.Owner.Name, contact.Name);
-                myMessage.Text = text;
-                contact.Recive(myMessage.From, myMessage);
-            
+                foreach (Contact person in persons)
+                {
+                                    
+                    if (person.Email == contact.Email)
+                    {
+                        Message myMessage = new Message(this.Owner.Name, person.Name);
+                        myMessage.Text = text;
+                        person.Recive(myMessage.From, myMessage);
+                        Console.WriteLine("Su mensaje ha sido enviado con exito.");
+                        sendE++;
+                    }
+                }
+            }
+
+            if (sendE == 0)
+            {
+                Console.WriteLine($"No tiene el email de {contact}.");
+            }
         }
     }
 }
