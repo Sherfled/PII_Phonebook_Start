@@ -1,27 +1,29 @@
+using System;
+using System.Collections.Generic;
+
 namespace Library
 {
-    public class SMSChannel //: Phonebook
+    public class WPPChannel 
     {
         
-        public void SendSMS(string myName, string text)
+        public void SendWPP(string[] myName, string text)
         {
-            /*
-            //List<Contact> persons = this.Search(myNames);
+            
+            List<Contact> persons = this.Search(myName);
 
-            foreach (Contact person in result)
+            foreach (Contact person in persons)
             {
                 //foreach (string name in myNames)
                 //{
-                    if (person.Name == myName)
+                    if (person.Name.Equals(myName))
                     {
-                        Message myMessage = new Message(this.Owner.Name, person.Name);
+                        Message myMessage = new Message(PhoneBook.Owner.Name, person.Name);
                         myMessage.Text = text;
-                        person.Recive(myMessage);
+                        person.Recive(myMessage.From, myMessage);
                     }
                 //}
             }
-            */
+            
         }
-        
     }
 }

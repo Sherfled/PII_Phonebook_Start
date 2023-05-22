@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 namespace Library
 {
-    public class Phonebook //: IMessageChannel
+    public class Phonebook : IMessageChannel
     {
         private List<Contact> persons;
 
@@ -46,7 +46,7 @@ namespace Library
 
 
         // Creo que habria que hacerle una clase para este y para el Mail, pero no se como hacer para llevar la lista "Persons".
-        public void SendSMS(string myName, string text)
+        public void SendWPP(string myName, string text)
         {
             //List<Contact> persons = this.Search(myNames);
             int send = 0;

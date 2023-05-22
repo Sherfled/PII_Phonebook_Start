@@ -2,8 +2,7 @@ namespace Library
 {
     public interface IMessageChannel
     {
-        void SendSMS(Message message, string names, string text);
+        void SendWPP(Message message, string names, string text);
         void SendEmail(Message message, string[] names, string text);
-        void SendPushNotification(Message message, string[] names, string text);
     }
 }
