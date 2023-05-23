@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 
-
 namespace Library
 {
     public class Phonebook : IMessageChannel
@@ -50,7 +49,7 @@ namespace Library
 
 
         // Creo que habria que hacerle una clase para este y para el Mail, pero no se como hacer para llevar la lista "Persons".
-        public void SendWPP(Contact contact, string text)
+        public void SendWPP(Contact contact, string text)   
         {
             //List<Contact> persons = this.Search(myNames);
             int send = 0;
@@ -64,7 +63,38 @@ namespace Library
                         Message myMessage = new Message(this.Owner.Name, person.Name);
                         myMessage.Text = text;
                         person.Recive(myMessage.From, myMessage);
-                        Console.WriteLine("Su mensaje ha sido enviado con exito.");
+                        Console.WriteLine($"Su mensaje (WhatsApp) ha sido enviado con exito a {person.Name}.");
+                        send++;
+                    }
+                }
+            }
+            else
+            {
+                Console.WriteLine("No puede enviarse mensaje de texto a usted.");
+            }
+
+            if (send == 0)
+            {
+                Console.WriteLine($"Usted no tiene al contacto {contact.Name} entre sus contactos.");
+            }
+
+        }
+
+        public void SendSMS(Contact contact, string text)
+        {
+            //List<Contact> persons = this.Search(myNames);
+            int send = 0;
+            if (contact.Name != this.Owner.Name)
+            {
+                foreach (Contact person in persons)
+                {
+                                    
+                    if (person.Name == contact.Name)
+                    {
+                        Message myMessage = new Message(this.Owner.Name, person.Name);
+                        myMessage.Text = text;
+                        person.Recive(myMessage.From, myMessage);
+                        Console.WriteLine($"Su mensaje (SMS) ha sido enviado con exito a {person.Name}.");
                         send++;
                     }
                 }
@@ -98,7 +128,7 @@ namespace Library
                         Message myMessage = new Message(this.Owner.Name, person.Name);
                         myMessage.Text = text;
                         person.Recive(myMessage.From, myMessage);
-                        Console.WriteLine("Su mensaje ha sido enviado con exito.");
+                        Console.WriteLine($"Su mail ha sido enviado con exito a {person.Name}.");
                         sendE++;
                     }
                 }
