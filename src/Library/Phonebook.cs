@@ -1,4 +1,6 @@
+using System;
 using System.Collections.Generic;
+
 
 namespace Library
 {
@@ -15,7 +17,6 @@ namespace Library
         public Contact Owner { get; }
 
 
-        // No se que hace esto. Si agrega, nosotros no deberiamos de hacer el metodo
         public List<Contact> Search(string[] names)
         {
             List<Contact> result = new List<Contact>();
@@ -33,11 +34,14 @@ namespace Library
 
             return result;
         }
+     
 
         public void Add(Contact contact)
         {
             this.persons.Add(contact);
         }
+        
+
 
         public void Remove(Contact contact)
         {
@@ -46,16 +50,16 @@ namespace Library
 
 
         // Creo que habria que hacerle una clase para este y para el Mail, pero no se como hacer para llevar la lista "Persons".
-        public void SendWPP(string myName, string text)
+        public void SendWPP(Contact contact, string text)
         {
             //List<Contact> persons = this.Search(myNames);
             int send = 0;
-            if (myName != this.Owner.Name)
+            if (contact.Name != this.Owner.Name)
             {
                 foreach (Contact person in persons)
                 {
                                     
-                    if (person.Name == myName)
+                    if (person.Name == contact.Name)
                     {
                         Message myMessage = new Message(this.Owner.Name, person.Name);
                         myMessage.Text = text;
@@ -67,12 +71,12 @@ namespace Library
             }
             else
             {
-                return Console.WriteLine("No puede enviarse mensaje de texto a usted.");
+                Console.WriteLine("No puede enviarse mensaje de texto a usted.");
             }
 
             if (send == 0)
             {
-                Console.WriteLine($"Usted no tiene al contacto {myName} entre sus contactos.");
+                Console.WriteLine($"Usted no tiene al contacto {contact.Name} entre sus contactos.");
             }
 
         }
@@ -103,7 +107,11 @@ namespace Library
             if (sendE == 0)
             {
                 Console.WriteLine($"No tiene el email de {contact}.");
-            }
+            }  
+        
+        
+        
+        
         }
     }
 }

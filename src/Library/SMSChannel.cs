@@ -5,7 +5,7 @@ namespace Library
 {
     public class WPPChannel 
     {
-        
+        /*
         public void SendWPP(string[] myName, string text)
         {
             
@@ -25,5 +25,6 @@ namespace Library
             }
             
         }
+        */
     }
 }
