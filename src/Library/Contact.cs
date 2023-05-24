@@ -13,7 +13,6 @@ namespace Library
         }
 
         public string Name { get; set; }
-
         public string Phone { get; set; }
         public string Recive(string name, Message text)
         {

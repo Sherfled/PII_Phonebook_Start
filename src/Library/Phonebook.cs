@@ -58,7 +58,7 @@ namespace Library
                 foreach (Contact person in persons)
                 {
                                     
-                    if (person.Name.Equals(contact))
+                    if (person.Name.Equals(contact.Name))
                     {
                         Message myMessage = new Message(this.Owner.Name, person.Name);
                         myMessage.Text = text;
@@ -89,7 +89,7 @@ namespace Library
                 foreach (Contact person in persons)
                 {
                                     
-                    if (person.Name.Equals(contact))
+                    if (person.Name.Equals(contact.Name))
                     {
                         Message myMessage = new Message(this.Owner.Name, person.Name);
                         myMessage.Text = text;
