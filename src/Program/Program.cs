@@ -86,10 +86,10 @@ namespace Program
             phonebook1.SendEmail(contacts[0], "Hola mundo");
 
             // Enviar un mensaje de texto a algunos contactos
-            phonebook1.SendWPP(contacts[2], "Hola mundo");
+            phonebook1.SendWPP(lista, contacts[2], "Hola mundo");
 
             // Enviar un SMS a algunos contactos
-            phonebook1.SendSMS(contacts[3], "Hola mundo");  
+            phonebook1.SendSMS(lista, contacts[3], "Hola mundo");  
         }
     }
 }

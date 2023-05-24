@@ -5,7 +5,8 @@ namespace Library
 {
     public interface IMessageChannel
     {
-        void SendWPP(Contact contact, string text);
+        void SendSMS(string[] myNames, Contact contact, string text);
+        void SendWPP(string[] myNames, Contact contact, string text);
         void SendEmail(Contact contact, string text);
     }
 }

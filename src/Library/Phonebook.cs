@@ -49,16 +49,16 @@ namespace Library
 
 
         // Creo que habria que hacerle una clase para este y para el Mail, pero no se como hacer para llevar la lista "Persons".
-        public void SendWPP(Contact contact, string text)   
+        public void SendWPP(string[] myNames, Contact contact, string text)   
         {
-            //List<Contact> persons = this.Search(myNames);
+            List<Contact> persons = this.Search(myNames);
             int send = 0;
             if (contact.Name != this.Owner.Name)
             {
                 foreach (Contact person in persons)
                 {
                                     
-                    if (person.Name == contact.Name)
+                    if (person.Name.Equals(contact))
                     {
                         Message myMessage = new Message(this.Owner.Name, person.Name);
                         myMessage.Text = text;
@@ -80,16 +80,16 @@ namespace Library
 
         }
 
-        public void SendSMS(Contact contact, string text)
+        public void SendSMS(string[] myNames, Contact contact, string text)
         {
-            //List<Contact> persons = this.Search(myNames);
+            List<Contact> persons = this.Search(myNames);
             int send = 0;
             if (contact.Name != this.Owner.Name)
             {
                 foreach (Contact person in persons)
                 {
                                     
-                    if (person.Name == contact.Name)
+                    if (person.Name.Equals(contact))
                     {
                         Message myMessage = new Message(this.Owner.Name, person.Name);
                         myMessage.Text = text;
@@ -139,9 +139,27 @@ namespace Library
                 Console.WriteLine($"No tiene el email de {contact}.");
             }  
         
-        
-        
-        
+        /*
+            public void SendWPP(string[] myName, string text)
+            {
+            
+            List<Contact> persons = this.Search(myName);
+
+            foreach (Contact person in persons)
+            {
+                //foreach (string name in myNames)
+                //{
+                    if (person.Name.Equals(myName))
+                    {
+                        Message myMessage = new Message(PhoneBook.Owner.Name, person.Name);
+                        myMessage.Text = text;
+                        person.Recive(myMessage.From, myMessage);
+                    }
+                //}
+            }
+            
+            }
+        */    
         }
     }
 }
